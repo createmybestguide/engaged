@@ -1924,19 +1924,22 @@
                         </p>
 
                         <div class="venue-actions">
+
+                            <!-- Get Direction -->
                             <a id="directionsButton" class="luxury-btn gold"
-                                href="https://www.google.com/maps/dir/?api=1&destination=26.901878758682724,81.15165429201129&travelmode=driving"
+                                href="https://www.google.com/maps/dir/?api=1&destination=S%20K%20MARRIAGE%20LAWN%2C%20NH%2027%2C%20Kurauli%2C%20Uttar%20Pradesh%20225003%2C%20India&travelmode=driving"
                                 target="_blank" rel="noopener noreferrer">
                                 <i class="bi bi-navigation-fill"></i>
-                                Get Directions
+                                Get Direction
                             </a>
 
-                            <a id="mapButton" class="luxury-btn light"
-                                href="https://www.google.com/maps/search/?api=1&query=26.901878758682724,81.15165429201129"
+                            <!-- View on Map -->
+                            <a id="mapButton" class="luxury-btn light" href="https://maps.app.goo.gl/wMBJZwtKookoucwS8"
                                 target="_blank" rel="noopener noreferrer">
                                 <i class="bi bi-map"></i>
                                 View on Map
                             </a>
+
                         </div>
 
                         <div id="mapUnavailable"
@@ -2102,14 +2105,14 @@
                 venueAddress: "Lucknow, Uttar Pradesh, India",
 
                 // Google Maps
-                latitude: "26.901878758682724",
-                longitude: "81.15165429201129",
+                latitude: "26.9018888889",
+                longitude: "81.1516666667",
 
                 // Optional direct map URL
-                mapsUrl: "https://www.google.com/maps/search/?api=1&query=26.901878758682724,81.15165429201129",
+                mapsUrl: "https://maps.app.goo.gl/wMBJZwtKookoucwS8",
 
                 // Google Maps embed
-                mapEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.05092850748!2d81.15165429201129!3d26.901878758682724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39995f54726273a3%3A0x3b6d6aacffa05dce!2sS%20K%20MARRIAGE%20LAWN!5e0!3m2!1",
+                mapEmbedUrl: "https://www.google.com/maps?q=26.9018888889,81.1516666667&output=embed",
 
                 // Main invitation message
                 invitationMessage:
@@ -2528,42 +2531,23 @@
                 const iframe = document.getElementById("venueMap");
                 const directionsButton = document.getElementById("directionsButton");
                 const mapButton = document.getElementById("mapButton");
-                const unavailable = document.getElementById("mapUnavailable");
 
                 if (iframe && weddingConfig.mapEmbedUrl) {
                     iframe.src = weddingConfig.mapEmbedUrl;
                 }
 
-                const destination = getMapDestination();
-                const hasDestination = Boolean(destination);
-
-                if (!hasDestination) {
-                    [directionsButton, mapButton].forEach(button => {
-                        if (!button) return;
-                        button.removeAttribute("href");
-                        button.setAttribute("aria-disabled", "true");
-                        button.style.pointerEvents = "none";
-                        button.style.opacity = ".5";
-                    });
-                    if (unavailable) unavailable.style.display = "block";
-                    return;
-                }
-
                 if (directionsButton) {
                     directionsButton.href =
-                        `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destination)}&travelmode=driving`;
+                        "https://www.google.com/maps/dir/?api=1&destination=S%20K%20MARRIAGE%20LAWN%2C%20NH%2027%2C%20Kurauli%2C%20Uttar%20Pradesh%20225003%2C%20India&travelmode=driving";
                     directionsButton.target = "_blank";
                     directionsButton.rel = "noopener noreferrer";
                 }
 
                 if (mapButton) {
-                    const mapUrl = getViewMapUrl(destination);
-
-                    if (mapUrl) {
-                        mapButton.href = mapUrl;
-                        mapButton.target = "_blank";
-                        mapButton.rel = "noopener noreferrer";
-                    }
+                    mapButton.href =
+                        "https://maps.app.goo.gl/wMBJZwtKookoucwS8";
+                    mapButton.target = "_blank";
+                    mapButton.rel = "noopener noreferrer";
                 }
             }
 
